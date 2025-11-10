@@ -1,0 +1,13 @@
+<header class="main-header">
+  <div class="header-container">
+    <div class="logo-container">
+      <img ngSrc="assets/Header.jpeg" alt="doigby" class="header-logo" height="640" width="640" (click)="home($event)"/>
+      <h1 class="brand-name">DoigbE-Commerce</h1>
+    </div>
+      <nav class="header-nav">
+        <a (click)="navigateTo($event, '/histoire')" class="nav-link">Histoire</a>
+        <a (click)="navigateTo($event, '/api')" class="nav-link">API</a>
+        <a (click)="navigateTo($event, '/croissance')" class="nav-link">Croissance</a>
+      </nav>
+  </div>
+</header>

@@ -1,0 +1,168 @@
+.histoire-container {
+  min-height: 100vh;
+  padding: 2rem;
+  background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)),
+  url('/assets/background-pattern.png');
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.histoire-hero {
+  text-align: center;
+  padding: 4rem 2rem;
+  margin-bottom: 3rem;
+  animation: fadeIn 1s ease-out;
+}
+
+.histoire-hero h1 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 3rem;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+.histoire-hero .subtitle {
+  font-size: 1.2rem;
+  color: var(--text-color);
+  opacity: 0.8;
+}
+
+.timeline {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  position: relative;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 100%;
+  background: var(--primary-color);
+}
+
+.timeline-item {
+  margin: 2rem 0;
+  position: relative;
+  width: 50%;
+  padding: 0 2rem;
+  animation: slideIn 0.8s ease-out;
+}
+
+.timeline-item:nth-child(odd) {
+  left: 0;
+}
+
+.timeline-item:nth-child(even) {
+  left: 50%;
+}
+
+.timeline-content {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+}
+
+.timeline-content:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.timeline-content h3 {
+  color: var(--primary-color);
+  font-family: 'Poppins', sans-serif;
+  margin-bottom: 1rem;
+}
+
+.timeline-content p {
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+.timeline-item.future .timeline-content {
+  background: linear-gradient(to right, #ffffff, #f0f9ff);
+  border: 2px dashed var(--primary-color);
+}
+
+.timeline-item.future .timeline-content h3 {
+  color: var(--primary-color);
+}
+
+.timeline-item.future .timeline-content p {
+  font-style: italic;
+}
+
+.cta-section {
+  text-align: center;
+  padding: 4rem 2rem;
+  margin-top: 3rem;
+}
+
+.cta-section h2 {
+  color: var(--primary-color);
+  font-family: 'Poppins', sans-serif;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.btn-back {
+  background: var(--accent-color);
+  box-shadow: 0 4px 12px rgba(52, 152, 219, 0.2);
+  color: var(--primary-color);
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  transition: var(--transition);
+  margin-top: 2rem;
+}
+
+.btn-back:hover {
+  background: var(--primary-color);
+  color: var(--accent-color);
+  box-shadow: 0 4px 12px rgba(52, 152, 219, 0.2);
+}
+
+@media (max-width: 768px) {
+  .timeline::before {
+    left: 0;
+  }
+
+  .timeline-item {
+    width: 100%;
+    left: 0 !important;
+    padding-left: 2rem;
+  }
+
+  .histoire-hero h1 {
+    font-size: 2rem;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}

@@ -1,0 +1,35 @@
+<div class="slider-container">
+  <div class="slider-wrapper">
+    <div class="slides" [style.transform]="'translateX(-' + currentSlide * 100 + '%)'">
+      <div class="slide" *ngFor="let slide of slides">
+        <img [src]="slide.image" [alt]="slide.title" />
+        <div class="slide-content">
+          <h3>{{ slide.title }}</h3>
+          <p>{{ slide.description }}</p>
+        </div>
+      </div>
+    </div>
+
+    <button class="nav-button prev" (click)="prevSlide()" aria-label="Previous slide">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polyline points="15 18 9 12 15 6"></polyline>
+      </svg>
+    </button>
+
+    <button class="nav-button next" (click)="nextSlide()" aria-label="Next slide">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polyline points="9 18 15 12 9 6"></polyline>
+      </svg>
+    </button>
+  </div>
+
+  <div class="dots-container">
+    <button
+      *ngFor="let slide of slides; let i = index"
+      class="dot"
+      [class.active]="i === currentSlide"
+      (click)="goToSlide(i)"
+      [attr.aria-label]="'Go to slide ' + (i + 1)"
+    ></button>
+  </div>
+</div>

@@ -1,0 +1,37 @@
+<section class="croissance-container">
+  <div class="croissance-content">
+    <div class="slider-section">
+      <image-slider [slides]="slides"></image-slider>
+    </div>
+
+    <div class="achievements-section">
+      <h2>Nos Accomplissements</h2>
+      <div class="achievements-grid">
+        <div class="achievement-card">
+          <div class="achievement-icon">🏆</div>
+          <h3>Prix de l'Innovation 2023</h3>
+          <p>Meilleure plateforme e-commerce européenne</p>
+        </div>
+        <div class="achievement-card">
+          <div class="achievement-icon">⭐</div>
+          <h3>98% de Satisfaction</h3>
+          <p>Note moyenne de nos clients</p>
+        </div>
+        <div class="achievement-card">
+          <div class="achievement-icon">🌱</div>
+          <h3>Engagé pour l'Environnement</h3>
+          <p>Certification Carbon Neutral 2024</p>
+        </div>
+        <div class="achievement-card">
+          <div class="achievement-icon">🚀</div>
+          <h3>Croissance +300%</h3>
+          <p>Chaque année depuis 2020</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="back-button-container">
+    <button (click)="home($event)" class="btn-back">Retour à l'accueil</button>
+  </div>
+</section>
