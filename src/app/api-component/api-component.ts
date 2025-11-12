@@ -1,7 +1,8 @@
-import { Component, inject } from '@angular/core';
+import {Component, inject, OnInit} from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HttpClient } from '@angular/common/http';
 import { CartService } from '../services/cart-services';
+import {ProductApiService} from '../services/product-api-service';
+
 
 @Component({
   selector: 'app-api-component',
@@ -9,27 +10,20 @@ import { CartService } from '../services/cart-services';
   templateUrl: './api-component.html',
   styleUrl: './api-component.css',
 })
-export class ApiComponent {
-  http = inject(HttpClient);
-  cartService = inject(CartService);
-  
-  posts: any[] = [];
+export class ApiComponent implements OnInit {
+
+  private cartService = inject(CartService);
+  private productService= inject(ProductApiService);
   products: any[] = [];
   groupedProducts: { [key: string]: any[] } = {};
-  
+
   selectedProduct: any = null;
   showSizeModal = false;
   sizes = ['S', 'M', 'L', 'XL', 'XXL', 'XXXL'];
 
-  private apiUrl = 'http://localhost:3000';
 
-  constructor() {
-    this.getPosts().subscribe((data: any[]) => {
-      console.log(data);
-      this.posts = data;
-    });
-
-    this.getProducts().subscribe((data: any) => {
+  ngOnInit(): void {
+    this.productService.getProducts().subscribe((data: any[]) => {
       console.log(data);
       this.products = data;
       this.groupProductsByCategory();
@@ -73,11 +67,4 @@ export class ApiComponent {
     }
   }
 
-  getPosts(): any {
-    return this.http.get(`${this.apiUrl}/posts`);
-  }
-
-  getProducts(): any {
-    return this.http.get(`${this.apiUrl}/products`);
-  }
 }

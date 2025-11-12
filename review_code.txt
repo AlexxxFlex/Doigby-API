@@ -1,0 +1,11 @@
+Dans le dossier src :
+- Faire un dossier par page => Attention, aux pages "statiques" qui peuvent être dans un seul dossier.
+- Page Home => qui affiche la liste des produits.
+- Renommer home component en "AboutComponent"
+- Stoppe au franglais !!!
+- Redecouper en composant (cf photo)
+- Nettoyage par rapport au post
+
+
+
+

@@ -15,7 +15,7 @@ export class HeaderComponent {
   isMenuOpen = false;
 
   constructor(private router: Router) {}
-
+// Les sortir et utiliser les router link dans le html
   home(event: Event) {
     console.log("clic bouton", event);
     event.preventDefault();
