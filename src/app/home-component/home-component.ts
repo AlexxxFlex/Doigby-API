@@ -24,4 +24,10 @@ export class HomeComponent {
     event.preventDefault();
     this.router.navigate(['/croissance']);
   }
+
+  api(event : Event) {
+    console.log("clic bouton", event);
+    event.preventDefault();
+    this.router.navigate(['/']);
+  }
 }

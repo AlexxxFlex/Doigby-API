@@ -3,11 +3,17 @@
     <div class="logo-container">
       <img ngSrc="assets/Header.jpeg" alt="doigby" class="header-logo" height="640" width="640" (click)="home($event)"/>
       <h1 class="brand-name">DoigbE-Commerce</h1>
+      <button class="menu-toggle" (click)="toggleMenu($event)" [attr.aria-expanded]="isMenuOpen">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" [class.rotated]="isMenuOpen">
+          <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
+      </button>
     </div>
-      <nav class="header-nav">
-        <a (click)="navigateTo($event, '/histoire')" class="nav-link">Histoire</a>
-        <a (click)="navigateTo($event, '/api')" class="nav-link">API</a>
-        <a (click)="navigateTo($event, '/croissance')" class="nav-link">Croissance</a>
-      </nav>
+
+    <nav class="header-nav" [class.open]="isMenuOpen">
+      <a (click)="navigateTo($event, '/histoire')" class="nav-link">Histoire</a>
+      <a (click)="navigateTo($event, '/home')" class="nav-link">À propos</a>
+      <a (click)="navigateTo($event, '/croissance')" class="nav-link">Croissance</a>
+    </nav>
   </div>
 </header>

@@ -1,0 +1,148 @@
+{
+  "products": [
+    {
+      "image": "assets/Pull-Doigby.jpg",
+      "id": "1",
+      "category": {"id": "1", "name": "Pull"},
+      "name": "Pull Doigby",
+      "slug": "pull-doigby",
+      "price": 49.99
+    },
+    {
+      "image": "assets/Pull2-Doigby.jpg",
+      "id": "2",
+      "category": {"id": "1", "name": "Pull"},
+      "name": "Pull2 Doigby",
+      "slug": "pull2-doigby",
+      "price": 59.99
+    },
+    {
+      "image": "assets/Pull3-Doigby.jpg",
+      "id": "3",
+      "category": {"id": "1", "name": "Pull"},
+      "name": "Pull3 Doigby",
+      "slug": "pull3-doigby",
+      "price": 89.99
+    },
+    {
+      "image": "assets/Pull4-Doigby.webp",
+      "id": "4",
+      "category": {"id": "1", "name": "Pull"},
+      "name": "Pull4 Doigby",
+      "slug": "pull4-doigby",
+      "price": 39.99
+    },
+    {
+      "image": "assets/Pull5-Doigby.png",
+      "id": "5",
+      "category": {"id": "1", "name": "Pull"},
+      "name": "Pull5 Doigby",
+      "slug": "pull5-doigby",
+      "price": 29.99
+    },
+    {
+      "image": "assets/Pull6-Doigby.jpg",
+      "id": "6",
+      "category": {"id": "1", "name": "Pull"},
+      "name": "Pull6 Doigby",
+      "slug": "pull6-doigby",
+      "price": 19.99
+    },
+    {
+      "image": "assets/T-Shirt-Doigby.jpeg",
+      "id": "7",
+      "category": {"id":  "2", "name":  "T-Shirt"},
+      "name": "T-Shirt Doigby",
+      "slug": "t-shirt-doigby",
+      "price": 23.99
+    },
+    {
+      "image": "assets/test.jpg",
+      "id": "8",
+      "category": {"id":  "2", "name":  "T-Shirt"},
+      "name": "T-Shirt2 Doigby",
+      "slug": "t-shirt2-doigby",
+      "price": 25.99
+    },
+    {
+      "image": "assets/test.jpg",
+      "id": "9",
+      "category": {"id":  "2", "name":  "T-Shirt"},
+      "name": "T-Shirt3 Doigby",
+      "slug": "t-shirt3-doigby",
+      "price": 27.99
+    },
+    {
+      "image": "assets/test.jpg",
+      "id": "10",
+      "category": {"id":  "2", "name":  "T-Shirt"},
+      "name": "T-Shirt4 Doigby",
+      "slug": "t-shirt4-doigby",
+      "price": 29.99
+    },
+    {
+      "image": "assets/test.jpg",
+      "id": "11",
+      "category": {"id":  "2", "name":  "T-Shirt"},
+      "name": "T-Shirt5 Doigby",
+      "slug": "t-shirt5-doigby",
+      "price": 31.99
+    },
+    {
+      "image": "assets/test.jpg",
+      "id": "12",
+      "category": {"id":  "2", "name":  "T-Shirt"},
+      "name": "T-Shirt6 Doigby",
+      "slug": "t-shirt6-doigby",
+      "price": 33.99
+    },
+    {
+      "image": "assets/test.jpg",
+      "id": "13",
+      "category": {"id":  "3", "name":  "Casquette"},
+      "name": "Casquette Doigby",
+      "slug": "casquette-doigby",
+      "price": 15.99
+    },
+    {
+      "image": "assets/test.jpg",
+      "id": "14",
+      "category": {"id":  "3", "name":  "Casquette"},
+      "name": "Casquette2 Doigby",
+      "slug": "casquette2-doigby",
+      "price": 17.99
+    },
+    {
+      "image": "assets/test.jpg",
+      "id": "15",
+      "category": {"id":  "3", "name":  "Casquette"},
+      "name": "Casquette3 Doigby",
+      "slug": "casquette3-doigby",
+      "price": 19.99
+    },
+    {
+      "image": "assets/test.jpg",
+      "id": "16",
+      "category": {"id":  "3", "name":  "Casquette"},
+      "name": "Casquette4 Doigby",
+      "slug": "casquette4-doigby",
+      "price": 21.99
+    },
+    {
+      "image": "assets/test.jpg",
+      "id": "17",
+      "category": {"id":  "3", "name":  "Casquette"},
+      "name": "Casquette5 Doigby",
+      "slug": "casquette5-doigby",
+      "price": 23.99
+    },
+    {
+      "image": "assets/test.jpg",
+      "id": "18",
+      "category": {"id":  "3", "name":  "Casquette"},
+      "name": "Casquette6 Doigby",
+      "slug": "casquette6-doigby",
+      "price": 25.99
+    }
+  ]
+}

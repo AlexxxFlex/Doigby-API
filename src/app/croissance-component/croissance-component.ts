@@ -58,6 +58,6 @@ export class CroissanceComponent {
   home(event: Event) {
     console.log("clic bouton", event);
     event.preventDefault();
-    this.router.navigate(['/home']);
+    this.router.navigate(['/']);
   }
 }

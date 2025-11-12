@@ -11,15 +11,13 @@
 .header-container {
   max-width: 1400px;
   margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   position: relative;
 }
 
 .logo-container {
   display: flex;
   align-items: center;
+  gap: 1rem;
 }
 
 .header-logo {
@@ -28,14 +26,14 @@
   border-radius: 12px;
   object-fit: cover;
   transition: transform 0.3s ease;
-  margin-right: 20px;
   cursor: pointer;
 }
 
+.header-logo:hover {
+  transform: scale(1.05);
+}
+
 .brand-name {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
   font-family: 'Poppins', sans-serif;
   font-size: 1.6rem;
   font-weight: 600;
@@ -47,9 +45,76 @@
   white-space: nowrap;
 }
 
+.menu-toggle {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+  border-radius: 8px;
+}
+
+.menu-toggle:hover {
+  background-color: rgba(42, 112, 234, 0.1);
+}
+
+.menu-toggle svg {
+  transition: transform 0.3s ease;
+  color: var(--primary-color);
+}
+
+.menu-toggle svg.rotated {
+  transform: rotate(180deg);
+}
+
+.header-nav {
+  position: absolute;
+  top: calc(100% + 1rem);
+  left: 0;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  min-width: 200px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
+}
+
+.header-nav.open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.nav-link {
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-color);
+  text-decoration: none;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  transition: var(--transition);
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.nav-link:hover {
+  color: var(--primary-color);
+  background-color: rgba(42, 112, 234, 0.1);
+}
+
 @media (max-width: 768px) {
   .main-header {
-    padding: 0.8rem 1.5rem;
+    padding: 1rem 1.5rem;
   }
 
   .brand-name {
@@ -60,27 +125,4 @@
     width: 40px;
     height: 40px;
   }
-}
-
-.header-nav {
-  display: flex;
-  gap: 2rem;
-  align-items: center;
-}
-
-.nav-link {
-  font-family: 'Inter', sans-serif;
-  font-size: 1rem;
-  font-weight: 500;
-  color: var(--text-color);
-  text-decoration: none;
-  padding: 0.5rem 1rem;
-  border-radius: 8px;
-  transition: var(--transition);
-  cursor: pointer;
-}
-
-.nav-link:hover {
-  color: var(--primary-color);
-  background-color: rgba(42, 112, 234, 0.1);
 }
