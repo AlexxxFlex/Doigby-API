@@ -1,56 +1,40 @@
 <div class="api-container">
   <h2>Nos Produits</h2>
 
-  <h3>Parcourez nos produits Doigbybyby</h3>
-  <ul>
-    @for(product of products; track product.id){
-      <li>
-        <img [src]="product.image" [alt]="product.name">
-        <div class="product-info">
-          <h4 class="product-name">{{product.name}}</h4>
-          <span class="product-category">{{product.category.name}}</span>
-          <span class="product-price">{{ product.price | currency: 'EUR'}}</span>
-          <button class="add-to-cart-btn" (click)="openSizeModal(product)">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <circle cx="9" cy="21" r="1"></circle>
-              <circle cx="20" cy="21" r="1"></circle>
-              <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-            </svg>
-            Ajouter au panier
-          </button>
-        </div>
-      </li>
-    }
-  </ul>
+  <app-list-product
+    *ngFor="let categoryId of getCategories()"
+    [products]="groupedProducts[categoryId]"
+    [categoryName]="getCategoryName(categoryId)"
+    (productSelected)="openSizeModal($event)">
+  </app-list-product>
 
-  <!-- Modale de sélection de taille -->
-  @if(showSizeModal && selectedProduct) {
-    <div class="modal-overlay" (click)="closeSizeModal()">
-      <div class="modal-content" (click)="$event.stopPropagation()">
-        <button class="modal-close" (click)="closeSizeModal()">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <line x1="18" y1="6" x2="6" y2="18"></line>
-            <line x1="6" y1="6" x2="18" y2="18"></line>
-          </svg>
-        </button>
+  <!-- Modal pour la sélection de taille -->
+  <div class="modal-overlay" *ngIf="showSizeModal" (click)="closeSizeModal()">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+      <button class="modal-close" (click)="closeSizeModal()">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
 
-        <div class="modal-header">
-          <img [src]="selectedProduct.image" [alt]="selectedProduct.name" class="modal-product-image">
-          <div>
-            <h3>{{selectedProduct.name}}</h3>
-            <p class="modal-price">{{ selectedProduct.price | currency: 'EUR'}}</p>
-          </div>
-        </div>
-
-        <h4>Sélectionnez une taille :</h4>
-        <div class="size-grid">
-          @for(size of sizes; track size) {
-            <button class="size-btn">
-              {{size}}
-            </button>
-          }
+      <div class="modal-header">
+        <img [src]="selectedProduct?.image" [alt]="selectedProduct?.name" class="modal-product-image" />
+        <div>
+          <h3>{{ selectedProduct?.name }}</h3>
+          <p class="modal-price">{{ selectedProduct?.price }} €</p>
         </div>
       </div>
+
+      <h4>Choisissez votre taille</h4>
+      <div class="size-grid">
+        <button 
+          *ngFor="let size of sizes" 
+          class="size-btn"
+          (click)="addToCart(selectedProduct, size)">
+          {{ size }}
+        </button>
+      </div>
     </div>
-  }
+  </div>
 </div>

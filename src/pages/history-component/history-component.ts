@@ -2,12 +2,12 @@ import { Component } from '@angular/core';
 import {Router} from '@angular/router';
 
 @Component({
-  selector: 'app-histoire-component',
+  selector: 'app-history-component',
   imports: [],
-  templateUrl: './histoire-component.html',
-  styleUrl: './histoire-component.css',
+  templateUrl: './history-component.html',
+  styleUrls: ['./history-component.css'],
 })
-export class HistoireComponent {
+export class HistoryComponent {
   constructor(private router: Router) {}
 
   home(event: Event) {

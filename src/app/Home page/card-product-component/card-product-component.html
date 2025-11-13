@@ -1,0 +1,23 @@
+<li [class.out-of-stock]="!isAvailable()">
+  <img [src]="product.image" [alt]="product.name" />
+  
+  <span *ngIf="getStockBadge()" class="stock-badge">{{ getStockBadge() }}</span>
+  
+  <div class="product-info">
+    <p class="product-category">{{ product.category.name }}</p>
+    <h4 class="product-name">{{ product.name }}</h4>
+    <p class="product-price">{{ getFormattedPrice() }}</p>
+    
+    <button 
+      class="add-to-cart-btn" 
+      (click)="onAddToCart()"
+      [disabled]="!isAvailable()">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="9" cy="21" r="1"></circle>
+        <circle cx="20" cy="21" r="1"></circle>
+        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+      </svg>
+      {{ isAvailable() ? 'Ajouter au panier' : 'Indisponible' }}
+    </button>
+  </div>
+</li>

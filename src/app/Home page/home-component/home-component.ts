@@ -1,35 +1,30 @@
-import {Component, inject, OnInit} from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {ProductApiService} from '../services/product-api-service';
-
+import { ProductApiService } from '../../services/product-api-service';
+import { ListProductComponent } from '../list-product-component/list-product-component';
 
 @Component({
-  selector: 'app-api-component',
-  imports: [CommonModule],
+  selector: 'app-home',
+  imports: [CommonModule, ListProductComponent],
   templateUrl: './home-component.html',
   styleUrl: './home-component.css',
 })
 export class HomeComponent implements OnInit {
-
-  private productService= inject(ProductApiService);
-  products: any[] = [];
+  private productService = inject(ProductApiService);
   groupedProducts: { [key: string]: any[] } = {};
 
   selectedProduct: any = null;
   showSizeModal = false;
   sizes = ['S', 'M', 'L', 'XL', 'XXL', 'XXXL'];
 
-
   ngOnInit(): void {
     this.productService.getProducts().subscribe((data: any[]) => {
-      console.log(data);
-      this.products = data;
-      this.groupProductsByCategory();
+      this.groupProductsByCategory(data);
     });
   }
 
-  groupProductsByCategory() {
-    this.groupedProducts = this.products.reduce((acc, product) => {
+  private groupProductsByCategory(products: any[]): void {
+    this.groupedProducts = products.reduce((acc, product) => {
       const categoryId = product.category.id;
       if (!acc[categoryId]) {
         acc[categoryId] = [];
@@ -48,14 +43,19 @@ export class HomeComponent implements OnInit {
     return product?.category?.name || '';
   }
 
-  openSizeModal(product: any) {
+  openSizeModal(product: any): void {
     this.selectedProduct = product;
     this.showSizeModal = true;
   }
 
-  closeSizeModal() {
+  closeSizeModal(): void {
     this.showSizeModal = false;
     this.selectedProduct = null;
   }
 
+  addToCart(product: any, size: string): void {
+    console.log('Ajout au panier:', { product, size });
+    // Logique d'ajout au panier à implémenter
+    this.closeSizeModal();
+  }
 }

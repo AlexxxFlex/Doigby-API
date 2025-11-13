@@ -7,16 +7,16 @@ import {Router} from '@angular/router';
   imports: [
     NgOptimizedImage
   ],
-  templateUrl: './home-component.html',
-  styleUrl: './home-component.css',
+  templateUrl: './about-component.html',
+  styleUrl: './about-component.css',
 })
-export class HomeComponent {
+export class AboutComponent {
   constructor(private router: Router) {}
 
-  histoire(event: Event) {
+  history(event: Event) {
     console.log("clic bouton", event);
     event.preventDefault();
-    this.router.navigate(['/histoire']);
+    this.router.navigate(['/history']);
   }
 
   croissance(event : Event) {
@@ -25,7 +25,7 @@ export class HomeComponent {
     this.router.navigate(['/croissance']);
   }
 
-  api(event : Event) {
+  home(event : Event) {
     console.log("clic bouton", event);
     event.preventDefault();
     this.router.navigate(['/']);
