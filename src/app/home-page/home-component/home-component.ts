@@ -3,10 +3,11 @@ import { CommonModule } from '@angular/common';
 import { ProductApiService } from '../../services/product-api-service';
 import { ListProductComponent } from '../list-product-component/list-product-component';
 import { InfiniteScrollDirective } from '../../directives/intersection-oberver.directive';
+import { HamsterLoaderComponent } from '../../components/hamster-loader-component';
 
 @Component({
   selector: 'app-home',
-  imports: [CommonModule, ListProductComponent, InfiniteScrollDirective],
+  imports: [CommonModule, ListProductComponent, InfiniteScrollDirective, HamsterLoaderComponent],
   templateUrl: './home-component.html',
   styleUrl: './home-component.css',
 })
