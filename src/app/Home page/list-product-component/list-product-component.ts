@@ -16,14 +16,4 @@ export class ListProductComponent {
   onProductSelected(product: any): void {
     this.productSelected.emit(product);
   }
-
-  // Méthode pour trier les produits si nécessaire
-  getSortedProducts(): any[] {
-    return [...this.products].sort((a, b) => a.price - b.price);
-  }
-
-  // Méthode pour filtrer les produits disponibles
-  getAvailableProducts(): any[] {
-    return this.products.filter(product => product.stock > 0);
-  }
 }

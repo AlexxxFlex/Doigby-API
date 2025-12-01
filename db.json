@@ -1,148 +1,822 @@
 {
   "products": [
     {
-      "image": "assets/Pull-Doigby.jpg",
       "id": "1",
-      "category": {"id": "1", "name": "Pull"},
       "name": "Pull Doigby",
       "slug": "pull-doigby",
-      "price": 49.99
+      "category": {"id": "1", "name": "Pull"},
+      "basePrice": 49.99,
+      "image": "assets/Pull-Doigby.jpg"
     },
     {
-      "image": "assets/Pull2-Doigby.jpg",
       "id": "2",
-      "category": {"id": "1", "name": "Pull"},
       "name": "Pull2 Doigby",
       "slug": "pull2-doigby",
-      "price": 59.99
+      "category": {"id": "1", "name": "Pull"},
+      "basePrice": 59.99,
+      "image": "assets/Pull2-Doigby.jpg"
     },
     {
-      "image": "assets/Pull3-Doigby.jpg",
       "id": "3",
-      "category": {"id": "1", "name": "Pull"},
       "name": "Pull3 Doigby",
       "slug": "pull3-doigby",
-      "price": 89.99
+      "category": {"id": "1", "name": "Pull"},
+      "basePrice": 89.99,
+      "image": "assets/Pull3-Doigby.jpg"
     },
     {
-      "image": "assets/Pull4-Doigby.webp",
       "id": "4",
-      "category": {"id": "1", "name": "Pull"},
       "name": "Pull4 Doigby",
       "slug": "pull4-doigby",
-      "price": 39.99
+      "category": {"id": "1", "name": "Pull"},
+      "basePrice": 39.99,
+      "image": "assets/Pull4-Doigby.webp"
     },
     {
-      "image": "assets/Pull5-Doigby.png",
       "id": "5",
-      "category": {"id": "1", "name": "Pull"},
       "name": "Pull5 Doigby",
       "slug": "pull5-doigby",
-      "price": 29.99
+      "category": {"id": "1", "name": "Pull"},
+      "basePrice": 29.99,
+      "image": "assets/Pull5-Doigby.png"
     },
     {
-      "image": "assets/Pull6-Doigby.jpg",
       "id": "6",
-      "category": {"id": "1", "name": "Pull"},
       "name": "Pull6 Doigby",
       "slug": "pull6-doigby",
-      "price": 19.99
+      "category": {"id": "1", "name": "Pull"},
+      "basePrice": 119.99,
+      "image": "assets/Pull6-Doigby.jpg"
     },
     {
-      "image": "assets/T-Shirt-Doigby.jpeg",
       "id": "7",
-      "category": {"id":  "2", "name":  "T-Shirt"},
       "name": "T-Shirt Doigby",
       "slug": "t-shirt-doigby",
-      "price": 23.99
+      "category": {"id": "2", "name": "T-Shirt"},
+      "basePrice": 23.99,
+      "image": "assets/T-Shirt-Doigby.jpeg"
     },
     {
-      "image": "assets/test.jpg",
       "id": "8",
-      "category": {"id":  "2", "name":  "T-Shirt"},
       "name": "T-Shirt2 Doigby",
       "slug": "t-shirt2-doigby",
-      "price": 25.99
+      "category": {"id": "2", "name": "T-Shirt"},
+      "basePrice": 25.99,
+      "image": "assets/test.jpg"
     },
     {
-      "image": "assets/test.jpg",
       "id": "9",
-      "category": {"id":  "2", "name":  "T-Shirt"},
       "name": "T-Shirt3 Doigby",
       "slug": "t-shirt3-doigby",
-      "price": 27.99
+      "category": {"id": "2", "name": "T-Shirt"},
+      "basePrice": 27.99,
+      "image": "assets/test.jpg"
     },
     {
-      "image": "assets/test.jpg",
       "id": "10",
-      "category": {"id":  "2", "name":  "T-Shirt"},
       "name": "T-Shirt4 Doigby",
       "slug": "t-shirt4-doigby",
-      "price": 29.99
+      "category": {"id": "2", "name": "T-Shirt"},
+      "basePrice": 29.99,
+      "image": "assets/test.jpg"
     },
     {
-      "image": "assets/test.jpg",
       "id": "11",
-      "category": {"id":  "2", "name":  "T-Shirt"},
       "name": "T-Shirt5 Doigby",
       "slug": "t-shirt5-doigby",
-      "price": 31.99
+      "category": {"id": "2", "name": "T-Shirt"},
+      "basePrice": 31.99,
+      "image": "assets/test.jpg"
     },
     {
-      "image": "assets/test.jpg",
       "id": "12",
-      "category": {"id":  "2", "name":  "T-Shirt"},
       "name": "T-Shirt6 Doigby",
       "slug": "t-shirt6-doigby",
-      "price": 33.99
+      "category": {"id": "2", "name": "T-Shirt"},
+      "basePrice": 33.99,
+      "image": "assets/test.jpg"
     },
     {
-      "image": "assets/test.jpg",
       "id": "13",
-      "category": {"id":  "3", "name":  "Casquette"},
       "name": "Casquette Doigby",
       "slug": "casquette-doigby",
-      "price": 15.99
+      "category": {"id": "3", "name": "Casquette"},
+      "basePrice": 15.99,
+      "image": "assets/test.jpg"
     },
     {
-      "image": "assets/test.jpg",
       "id": "14",
-      "category": {"id":  "3", "name":  "Casquette"},
       "name": "Casquette2 Doigby",
       "slug": "casquette2-doigby",
-      "price": 17.99
+      "category": {"id": "3", "name": "Casquette"},
+      "basePrice": 17.99,
+      "image": "assets/test.jpg"
     },
     {
-      "image": "assets/test.jpg",
       "id": "15",
-      "category": {"id":  "3", "name":  "Casquette"},
       "name": "Casquette3 Doigby",
       "slug": "casquette3-doigby",
-      "price": 19.99
+      "category": {"id": "3", "name": "Casquette"},
+      "basePrice": 19.99,
+      "image": "assets/test.jpg"
     },
     {
-      "image": "assets/test.jpg",
       "id": "16",
-      "category": {"id":  "3", "name":  "Casquette"},
       "name": "Casquette4 Doigby",
       "slug": "casquette4-doigby",
-      "price": 21.99
+      "category": {"id": "3", "name": "Casquette"},
+      "basePrice": 21.99,
+      "image": "assets/test.jpg"
     },
     {
-      "image": "assets/test.jpg",
       "id": "17",
-      "category": {"id":  "3", "name":  "Casquette"},
       "name": "Casquette5 Doigby",
       "slug": "casquette5-doigby",
-      "price": 23.99
+      "category": {"id": "3", "name": "Casquette"},
+      "basePrice": 23.99,
+      "image": "assets/test.jpg"
     },
     {
-      "image": "assets/test.jpg",
       "id": "18",
-      "category": {"id":  "3", "name":  "Casquette"},
       "name": "Casquette6 Doigby",
       "slug": "casquette6-doigby",
-      "price": 25.99
+      "category": {"id": "3", "name": "Casquette"},
+      "basePrice": 25.99,
+      "image": "assets/test.jpg"
+    },
+    {
+      "id": "19",
+      "name": "Veste Doigby",
+      "slug": "veste-doigby",
+      "category": {"id": "4", "name": "Veste"},
+      "basePrice": 89.99,
+      "image": "assets/test.jpg"
+    },
+    {
+      "id": "20",
+      "name": "Veste2 Doigby",
+      "slug": "veste2-doigby",
+      "category": {"id": "4", "name": "Veste"},
+      "basePrice": 99.99,
+      "image": "assets/test.jpg"
+    },
+    {
+      "id": "21",
+      "name": "Veste3 Doigby",
+      "slug": "veste3-doigby",
+      "category": {"id": "4", "name": "Veste"},
+      "basePrice": 109.99,
+      "image": "assets/test.jpg"
+    },
+    {
+      "id": "22",
+      "name": "Veste4 Doigby",
+      "slug": "veste4-doigby",
+      "category": {"id": "4", "name": "Veste"},
+      "basePrice": 119.99,
+      "image": "assets/test.jpg"
+    },
+    {
+      "id": "23",
+      "name": "Pantalon Doigby",
+      "slug": "pantalon-doigby",
+      "category": {"id": "5", "name": "Pantalon"},
+      "basePrice": 54.99,
+      "image": "assets/test.jpg"
+    },
+    {
+      "id": "24",
+      "name": "Pantalon2 Doigby",
+      "slug": "pantalon2-doigby",
+      "category": {"id": "5", "name": "Pantalon"},
+      "basePrice": 59.99,
+      "image": "assets/test.jpg"
+    },
+    {
+      "id": "25",
+      "name": "Pantalon3 Doigby",
+      "slug": "pantalon3-doigby",
+      "category": {"id": "5", "name": "Pantalon"},
+      "basePrice": 64.99,
+      "image": "assets/test.jpg"
+    },
+    {
+      "id": "26",
+      "name": "Pantalon4 Doigby",
+      "slug": "pantalon4-doigby",
+      "category": {"id": "5", "name": "Pantalon"},
+      "basePrice": 69.99,
+      "image": "assets/test.jpg"
+    },
+    {
+      "id": "27",
+      "name": "Short Doigby",
+      "slug": "short-doigby",
+      "category": {"id": "6", "name": "Short"},
+      "basePrice": 34.99,
+      "image": "assets/test.jpg"
+    },
+    {
+      "id": "28",
+      "name": "Short2 Doigby",
+      "slug": "short2-doigby",
+      "category": {"id": "6", "name": "Short"},
+      "basePrice": 39.99,
+      "image": "assets/test.jpg"
+    },
+    {
+      "id": "29",
+      "name": "Short3 Doigby",
+      "slug": "short3-doigby",
+      "category": {"id": "6", "name": "Short"},
+      "basePrice": 44.99,
+      "image": "assets/test.jpg"
+    },
+    {
+      "id": "30",
+      "name": "Chaussures Doigby",
+      "slug": "chaussures-doigby",
+      "category": {"id": "7", "name": "Chaussures"},
+      "basePrice": 79.99,
+      "image": "assets/test.jpg"
+    },
+    {
+      "id": "31",
+      "name": "Chaussures2 Doigby",
+      "slug": "chaussures2-doigby",
+      "category": {"id": "7", "name": "Chaussures"},
+      "basePrice": 89.99,
+      "image": "assets/test.jpg"
+    },
+    {
+      "id": "32",
+      "name": "Chaussures3 Doigby",
+      "slug": "chaussures3-doigby",
+      "category": {"id": "7", "name": "Chaussures"},
+      "basePrice": 99.99,
+      "image": "assets/test.jpg"
+    },
+    {
+      "id": "33",
+      "name": "Sweat Doigby",
+      "slug": "sweat-doigby",
+      "category": {"id": "8", "name": "Sweat"},
+      "basePrice": 44.99,
+      "image": "assets/test.jpg"
+    },
+    {
+      "id": "34",
+      "name": "Sweat2 Doigby",
+      "slug": "sweat2-doigby",
+      "category": {"id": "8", "name": "Sweat"},
+      "basePrice": 49.99,
+      "image": "assets/test.jpg"
+    },
+    {
+      "id": "35",
+      "name": "Sweat3 Doigby",
+      "slug": "sweat3-doigby",
+      "category": {"id": "8", "name": "Sweat"},
+      "basePrice": 54.99,
+      "image": "assets/test.jpg"
+    },
+    {
+      "id": "36",
+      "name": "Accessoire Doigby",
+      "slug": "accessoire-doigby",
+      "category": {"id": "9", "name": "Accessoire"},
+      "basePrice": 12.99,
+      "image": "assets/test.jpg"
+    },
+    {
+      "id": "37",
+      "name": "Accessoire2 Doigby",
+      "slug": "accessoire2-doigby",
+      "category": {"id": "9", "name": "Accessoire"},
+      "basePrice": 14.99,
+      "image": "assets/test.jpg"
+    },
+    {
+      "id": "38",
+      "name": "Accessoire3 Doigby",
+      "slug": "accessoire3-doigby",
+      "category": {"id": "9", "name": "Accessoire"},
+      "basePrice": 16.99,
+      "image": "assets/test.jpg"
+    },
+    {
+      "id": "39",
+      "name": "Sac Doigby",
+      "slug": "sac-doigby",
+      "category": {"id": "10", "name": "Sac"},
+      "basePrice": 39.99,
+      "image": "assets/test.jpg"
+    },
+    {
+      "id": "40",
+      "name": "Sac2 Doigby",
+      "slug": "sac2-doigby",
+      "category": {"id": "10", "name": "Sac"},
+      "basePrice": 44.99,
+      "image": "assets/test.jpg"
+    },
+    {
+      "id": "41",
+      "name": "Sac3 Doigby",
+      "slug": "sac3-doigby",
+      "category": {"id": "10", "name": "Sac"},
+      "basePrice": 49.99,
+      "image": "assets/test.jpg"
+    },
+    {
+      "id": "42",
+      "name": "Écharpe Doigby",
+      "slug": "echarpe-doigby",
+      "category": {"id": "11", "name": "Écharpe"},
+      "basePrice": 24.99,
+      "image": "assets/test.jpg"
+    },
+    {
+      "id": "43",
+      "name": "Écharpe2 Doigby",
+      "slug": "echarpe2-doigby",
+      "category": {"id": "11", "name": "Écharpe"},
+      "basePrice": 29.99,
+      "image": "assets/test.jpg"
+    },
+    {
+      "id": "44",
+      "name": "Gants Doigby",
+      "slug": "gants-doigby",
+      "category": {"id": "12", "name": "Gants"},
+      "basePrice": 19.99,
+      "image": "assets/test.jpg"
+    },
+    {
+      "id": "45",
+      "name": "Gants2 Doigby",
+      "slug": "gants2-doigby",
+      "category": {"id": "12", "name": "Gants"},
+      "basePrice": 22.99,
+      "image": "assets/test.jpg"
+    },
+    {
+      "id": "46",
+      "name": "Bonnet Doigby",
+      "slug": "bonnet-doigby",
+      "category": {"id": "13", "name": "Bonnet"},
+      "basePrice": 18.99,
+      "image": "assets/test.jpg"
+    },
+    {
+      "id": "47",
+      "name": "Bonnet2 Doigby",
+      "slug": "bonnet2-doigby",
+      "category": {"id": "13", "name": "Bonnet"},
+      "basePrice": 21.99,
+      "image": "assets/test.jpg"
+    },
+    {
+      "id": "48",
+      "name": "Ceinture Doigby",
+      "slug": "ceinture-doigby",
+      "category": {"id": "14", "name": "Ceinture"},
+      "basePrice": 27.99,
+      "image": "assets/test.jpg"
+    }
+  ],
+  "product-variants": [
+    {
+      "id": "1",
+      "productId": "1",
+      "description": "Pull élégant et confortable pour toutes les saisons",
+      "images": ["assets/Pull-Doigby.jpg", "assets/Pull-Doigby2.png", "assets/Pull-Doigby3.png"],
+      "sizes": ["S", "M", "L", "XL", "XXL", "XXXL"],
+      "colors": ["Rouge", "Bleu", "Vert", "Noir", "Blanc"],
+      "stock": 3
+    },
+    {
+      "id": "2",
+      "productId": "2",
+      "description": "Pull premium avec finitions soignées",
+      "images": ["assets/Pull2-Doigby.jpg"],
+      "sizes": ["S", "M", "L", "XL", "XXL", "XXXL"],
+      "colors": ["Bleu Marine", "Gris", "Bordeaux"],
+      "stock": 39
+    },
+    {
+      "id": "3",
+      "productId": "3",
+      "description": "Pull haut de gamme en matières nobles",
+      "images": ["assets/Pull3-Doigby.jpg"],
+      "sizes": ["S", "M", "L", "XL", "XXL", "XXXL"],
+      "colors": ["Noir", "Anthracite"],
+      "stock": 0
+    },
+    {
+      "id": "4",
+      "productId": "4",
+      "description": "Pull décontracté pour un style casual",
+      "images": ["assets/Pull4-Doigby.webp"],
+      "sizes": ["S", "M", "L", "XL", "XXL", "XXXL"],
+      "colors": ["Couleur unique"],
+      "stock": 127
+    },
+    {
+      "id": "5",
+      "productId": "5",
+      "description": "Pull basique essentiel pour votre garde-robe",
+      "images": ["assets/Pull5-Doigby.png"],
+      "sizes": ["S", "M", "L", "XL", "XXL", "XXXL"],
+      "colors": ["Noir", "Blanc", "Gris"],
+      "stock": 142
+    },
+    {
+      "id": "6",
+      "productId": "6",
+      "description": "Pull entrée de gamme au meilleur rapport qualité-prix",
+      "images": ["assets/Pull6-Doigby.jpg", "assets/Pull6-Doigby2.jpg", "assets/Pull6-Doigby3.jpg",  "assets/Pull6-Doigby4.jpg"],
+      "sizes": ["S", "M", "L", "XL", "XXL", "XXXL"],
+      "colors": ["Blanc", "Gris", "Noir"],
+      "stock": 200
+    },
+    {
+      "id": "7",
+      "productId": "7",
+      "description": "T-Shirt en coton respirant pour un confort optimal",
+      "images": ["assets/T-Shirt-Doigby.jpeg"],
+      "sizes": ["S", "M", "L", "XL", "XXL", "XXXL"],
+      "colors": ["Blanc", "Noir", "Rouge", "Bleu"],
+      "stock": 50
+    },
+    {
+      "id": "8",
+      "productId": "8",
+      "description": "T-Shirt graphique avec design moderne",
+      "images": ["assets/test.jpg"],
+      "sizes": ["S", "M", "L", "XL", "XXL", "XXXL"],
+      "colors": ["Noir", "Blanc", "Gris"],
+      "stock": 45
+    },
+    {
+      "id": "9",
+      "productId": "9",
+      "description": "T-Shirt premium avec finitions soignées",
+      "images": ["assets/test.jpg"],
+      "sizes": ["S", "M", "L", "XL", "XXL", "XXXL"],
+      "colors": ["Bleu Marine", "Bordeaux"],
+      "stock": 30
+    },
+    {
+      "id": "10",
+      "productId": "10",
+      "description": "T-Shirt tendance pour un look urbain",
+      "images": ["assets/test.jpg"],
+      "sizes": ["S", "M", "L", "XL", "XXL", "XXXL"],
+      "colors": ["Noir", "Blanc"],
+      "stock": 20
+    },
+    {
+      "id": "11",
+      "productId": "11",
+      "description": "T-Shirt sport avec technologie anti-transpiration",
+      "images": ["assets/test.jpg"],
+      "sizes": ["S", "M", "L", "XL", "XXL", "XXXL"],
+      "colors": ["Bleu", "Vert", "Orange"],
+      "stock": 15
+    },
+    {
+      "id": "12",
+      "productId": "12",
+      "description": "T-Shirt collector édition limitée",
+      "images": ["assets/test.jpg"],
+      "sizes": ["S", "M", "L", "XL", "XXL", "XXXL"],
+      "colors": ["Noir"],
+      "stock": 10
+    },
+    {
+      "id": "13",
+      "productId": "13",
+      "description": "Casquette classique ajustable pour tous les styles",
+      "images": ["assets/test.jpg"],
+      "sizes": ["Unique"],
+      "colors": ["Noir", "Blanc", "Rouge", "Bleu"],
+      "stock": 50
+    },
+    {
+      "id": "14",
+      "productId": "14",
+      "description": "Casquette snapback avec visière plate",
+      "images": ["assets/test.jpg"],
+      "sizes": ["Unique"],
+      "colors": ["Noir", "Bleu Marine", "Gris"],
+      "stock": 45
+    },
+    {
+      "id": "15",
+      "productId": "15",
+      "description": "Casquette trucker respirante pour l'été",
+      "images": ["assets/test.jpg"],
+      "sizes": ["Unique"],
+      "colors": ["Blanc", "Beige"],
+      "stock": 30
+    },
+    {
+      "id": "16",
+      "productId": "16",
+      "description": "Casquette premium en matières nobles",
+      "images": ["assets/test.jpg"],
+      "sizes": ["Unique"],
+      "colors": ["Noir", "Marron"],
+      "stock": 20
+    },
+    {
+      "id": "17",
+      "productId": "17",
+      "description": "Casquette sport technique pour les activités outdoor",
+      "images": ["assets/test.jpg"],
+      "sizes": ["Unique"],
+      "colors": ["Bleu", "Vert", "Orange"],
+      "stock": 15
+    },
+    {
+      "id": "18",
+      "productId": "18",
+      "description": "Casquette tendance avec broderie personnalisée",
+      "images": ["assets/test.jpg"],
+      "sizes": ["Unique"],
+      "colors": ["Noir", "Blanc", "Rouge"],
+      "stock": 102
+    },
+    {
+      "id": "19",
+      "productId": "19",
+      "description": "Veste imperméable et coupe-vent pour toutes conditions",
+      "images": ["assets/test.jpg"],
+      "sizes": ["S", "M", "L", "XL", "XXL"],
+      "colors": ["Noir", "Bleu Marine", "Kaki"],
+      "stock": 35
+    },
+    {
+      "id": "20",
+      "productId": "20",
+      "description": "Veste légère idéale pour la mi-saison",
+      "images": ["assets/test.jpg"],
+      "sizes": ["S", "M", "L", "XL", "XXL"],
+      "colors": ["Gris", "Noir", "Beige"],
+      "stock": 40
+    },
+    {
+      "id": "21",
+      "productId": "21",
+      "description": "Veste technique avec isolation thermique",
+      "images": ["assets/test.jpg"],
+      "sizes": ["S", "M", "L", "XL", "XXL"],
+      "colors": ["Noir", "Rouge", "Vert"],
+      "stock": 25
+    },
+    {
+      "id": "22",
+      "productId": "22",
+      "description": "Veste premium en cuir synthétique",
+      "images": ["assets/test.jpg"],
+      "sizes": ["S", "M", "L", "XL", "XXL"],
+      "colors": ["Noir", "Marron"],
+      "stock": 18
+    },
+    {
+      "id": "23",
+      "productId": "23",
+      "description": "Pantalon confortable en coton stretch",
+      "images": ["assets/test.jpg"],
+      "sizes": ["28", "30", "32", "34", "36", "38"],
+      "colors": ["Noir", "Bleu", "Beige"],
+      "stock": 60
+    },
+    {
+      "id": "24",
+      "productId": "24",
+      "description": "Pantalon cargo avec multiples poches",
+      "images": ["assets/test.jpg"],
+      "sizes": ["28", "30", "32", "34", "36", "38"],
+      "colors": ["Kaki", "Noir", "Gris"],
+      "stock": 55
+    },
+    {
+      "id": "25",
+      "productId": "25",
+      "description": "Pantalon slim fit moderne et élégant",
+      "images": ["assets/test.jpg"],
+      "sizes": ["28", "30", "32", "34", "36", "38"],
+      "colors": ["Noir", "Bleu Marine", "Gris"],
+      "stock": 48
+    },
+    {
+      "id": "26",
+      "productId": "26",
+      "description": "Pantalon jogging décontracté pour le sport",
+      "images": ["assets/test.jpg"],
+      "sizes": ["S", "M", "L", "XL", "XXL"],
+      "colors": ["Noir", "Gris", "Bleu"],
+      "stock": 70
+    },
+    {
+      "id": "27",
+      "productId": "27",
+      "description": "Short léger et respirant pour l'été",
+      "images": ["assets/test.jpg"],
+      "sizes": ["S", "M", "L", "XL", "XXL"],
+      "colors": ["Beige", "Noir", "Kaki"],
+      "stock": 45
+    },
+    {
+      "id": "28",
+      "productId": "28",
+      "description": "Short de sport avec tissu technique",
+      "images": ["assets/test.jpg"],
+      "sizes": ["S", "M", "L", "XL", "XXL"],
+      "colors": ["Noir", "Bleu", "Rouge"],
+      "stock": 50
+    },
+    {
+      "id": "29",
+      "productId": "29",
+      "description": "Short cargo avec poches latérales",
+      "images": ["assets/test.jpg"],
+      "sizes": ["S", "M", "L", "XL", "XXL"],
+      "colors": ["Kaki", "Noir", "Beige"],
+      "stock": 38
+    },
+    {
+      "id": "30",
+      "productId": "30",
+      "description": "Chaussures de sport confortables et légères",
+      "images": ["assets/test.jpg"],
+      "sizes": ["39", "40", "41", "42", "43", "44", "45"],
+      "colors": ["Blanc", "Noir", "Gris"],
+      "stock": 42
+    },
+    {
+      "id": "31",
+      "productId": "31",
+      "description": "Chaussures urbaines style streetwear",
+      "images": ["assets/test.jpg"],
+      "sizes": ["39", "40", "41", "42", "43", "44", "45"],
+      "colors": ["Noir", "Blanc", "Rouge"],
+      "stock": 36
+    },
+    {
+      "id": "32",
+      "productId": "32",
+      "description": "Chaussures premium en cuir véritable",
+      "images": ["assets/test.jpg"],
+      "sizes": ["39", "40", "41", "42", "43", "44", "45"],
+      "colors": ["Noir", "Marron"],
+      "stock": 28
+    },
+    {
+      "id": "33",
+      "productId": "33",
+      "description": "Sweat à capuche confortable et chaud",
+      "images": ["assets/test.jpg"],
+      "sizes": ["S", "M", "L", "XL", "XXL", "XXXL"],
+      "colors": ["Noir", "Gris", "Bleu Marine"],
+      "stock": 65
+    },
+    {
+      "id": "34",
+      "productId": "34",
+      "description": "Sweat col rond classique et intemporel",
+      "images": ["assets/test.jpg"],
+      "sizes": ["S", "M", "L", "XL", "XXL", "XXXL"],
+      "colors": ["Gris", "Noir", "Bordeaux"],
+      "stock": 58
+    },
+    {
+      "id": "35",
+      "productId": "35",
+      "description": "Sweat zippé pratique et polyvalent",
+      "images": ["assets/test.jpg"],
+      "sizes": ["S", "M", "L", "XL", "XXL", "XXXL"],
+      "colors": ["Noir", "Gris", "Kaki"],
+      "stock": 52
+    },
+    {
+      "id": "36",
+      "productId": "36",
+      "description": "Porte-clés tendance avec finitions premium",
+      "images": ["assets/test.jpg"],
+      "sizes": ["Unique"],
+      "colors": ["Noir", "Argent", "Or"],
+      "stock": 100
+    },
+    {
+      "id": "37",
+      "productId": "37",
+      "description": "Bracelet ajustable en matière durable",
+      "images": ["assets/test.jpg"],
+      "sizes": ["Unique"],
+      "colors": ["Noir", "Marron", "Bleu"],
+      "stock": 85
+    },
+    {
+      "id": "38",
+      "productId": "38",
+      "description": "Badge collector édition spéciale",
+      "images": ["assets/test.jpg"],
+      "sizes": ["Unique"],
+      "colors": ["Multicolore"],
+      "stock": 120
+    },
+    {
+      "id": "39",
+      "productId": "39",
+      "description": "Sac à dos résistant avec compartiment laptop",
+      "images": ["assets/test.jpg"],
+      "sizes": ["Unique"],
+      "colors": ["Noir", "Gris", "Bleu"],
+      "stock": 32
+    },
+    {
+      "id": "40",
+      "productId": "40",
+      "description": "Sac bandoulière compact et pratique",
+      "images": ["assets/test.jpg"],
+      "sizes": ["Unique"],
+      "colors": ["Noir", "Kaki", "Marron"],
+      "stock": 28
+    },
+    {
+      "id": "41",
+      "productId": "41",
+      "description": "Sac de sport grande capacité et léger",
+      "images": ["assets/test.jpg"],
+      "sizes": ["Unique"],
+      "colors": ["Noir", "Bleu", "Rouge"],
+      "stock": 24
+    },
+    {
+      "id": "42",
+      "productId": "42",
+      "description": "Écharpe douce et chaude en laine",
+      "images": ["assets/test.jpg"],
+      "sizes": ["Unique"],
+      "colors": ["Noir", "Gris", "Bordeaux", "Beige"],
+      "stock": 40
+    },
+    {
+      "id": "43",
+      "productId": "43",
+      "description": "Écharpe légère en coton pour mi-saison",
+      "images": ["assets/test.jpg"],
+      "sizes": ["Unique"],
+      "colors": ["Blanc", "Bleu", "Noir"],
+      "stock": 35
+    },
+    {
+      "id": "44",
+      "productId": "44",
+      "description": "Gants thermiques pour l'hiver",
+      "images": ["assets/test.jpg"],
+      "sizes": ["S", "M", "L"],
+      "colors": ["Noir", "Gris"],
+      "stock": 45
+    },
+    {
+      "id": "45",
+      "productId": "45",
+      "description": "Gants tactiles compatibles smartphones",
+      "images": ["assets/test.jpg"],
+      "sizes": ["S", "M", "L"],
+      "colors": ["Noir", "Gris", "Marron"],
+      "stock": 50
+    },
+    {
+      "id": "46",
+      "productId": "46",
+      "description": "Bonnet en laine classique et chaud",
+      "images": ["assets/test.jpg"],
+      "sizes": ["Unique"],
+      "colors": ["Noir", "Gris", "Bleu Marine", "Bordeaux"],
+      "stock": 55
+    },
+    {
+      "id": "47",
+      "productId": "47",
+      "description": "Bonnet avec pompon tendance",
+      "images": ["assets/test.jpg"],
+      "sizes": ["Unique"],
+      "colors": ["Noir", "Blanc", "Gris"],
+      "stock": 48
+    },
+    {
+      "id": "48",
+      "productId": "48",
+      "description": "Ceinture en cuir avec boucle premium",
+      "images": ["assets/test.jpg"],
+      "sizes": ["85", "90", "95", "100", "105"],
+      "colors": ["Noir", "Marron"],
+      "stock": 40
     }
   ]
 }

@@ -1,7 +1,0 @@
-Dans le dossier src :
-// - Faire un dossier par page => Attention, aux pages "statiques" qui peuvent être dans un seul dossier. -BON
-// - Page Home => qui affiche la liste des produits. -BON
-// - Renommer home component en "AboutComponent" -BON
-// - Stoppe au franglais !!! - j'éspère que c'est BON
-- Redecouper en composant (cf photo) - EN COURS - je suis fatigué la...
-// - Nettoyage par rapport au post => suppression des appellations post - BON

@@ -1,4 +1,5 @@
 li {
+  position: relative;
   background: white;
   border-radius: 20px;
   overflow: hidden;
@@ -12,6 +13,10 @@ li {
 li:hover {
   transform: translateY(-10px);
   box-shadow: 0 12px 30px rgba(42, 112, 234, 0.2);
+}
+
+li:hover .stock-badge {
+  opacity: 1;
 }
 
 li img {
@@ -97,13 +102,17 @@ li:hover img {
   position: absolute;
   top: 1rem;
   right: 1rem;
-  background: #ff6b6b;
-  color: white;
+  background: var(--accent-color);
+  background-color: #ff3d3d;
+  color: #ffffff;
+  border: 1px solid #ffffff;
   padding: 0.5rem 1rem;
   border-radius: 20px;
   font-size: 0.85rem;
   font-weight: 600;
   z-index: 1;
+  opacity: 0;
+  transition: var(--transition);
 }
 
 li.out-of-stock {

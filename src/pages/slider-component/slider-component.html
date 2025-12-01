@@ -1,13 +1,15 @@
 <div class="slider-container">
   <div class="slider-wrapper">
     <div class="slides" [style.transform]="'translateX(-' + currentSlide * 100 + '%)'">
-      <div class="slide" *ngFor="let slide of slides">
-        <img [src]="slide.image" [alt]="slide.title" />
-        <div class="slide-content">
-          <h3>{{ slide.title }}</h3>
-          <p>{{ slide.description }}</p>
+      @for (slide of slides; track $index) {
+        <div class="slide">
+          <img [src]="slide.image" [alt]="slide.title" />
+          <div class="slide-content">
+            <h3>{{ slide.title }}</h3>
+            <p>{{ slide.description }}</p>
+          </div>
         </div>
-      </div>
+      }
     </div>
 
     <button class="nav-button prev" (click)="prevSlide()" aria-label="Previous slide">
@@ -24,12 +26,13 @@
   </div>
 
   <div class="dots-container">
-    <button
-      *ngFor="let slide of slides; let i = index"
-      class="dot"
-      [class.active]="i === currentSlide"
-      (click)="goToSlide(i)"
-      [attr.aria-label]="'Go to slide ' + (i + 1)"
-    ></button>
+    @for (slide of slides; track $index; let i = $index) {
+      <button
+        class="dot"
+        [class.active]="i === currentSlide"
+        (click)="goToSlide(i)"
+        [attr.aria-label]="'Go to slide ' + (i + 1)"
+      ></button>
+    }
   </div>
 </div>

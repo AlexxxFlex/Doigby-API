@@ -1,16 +1,18 @@
-<li [class.out-of-stock]="!isAvailable()">
+<li [class.out-of-stock]="!isAvailable()" (click)="onCardClick()" style="cursor: pointer;">
   <img [src]="product.image" [alt]="product.name" />
   
-  <span *ngIf="getStockBadge()" class="stock-badge">{{ getStockBadge() }}</span>
+  @if (getStockBadge()) {
+    <span class="stock-badge">{{ getStockBadge() }}</span>
+  }
   
   <div class="product-info">
     <p class="product-category">{{ product.category.name }}</p>
     <h4 class="product-name">{{ product.name }}</h4>
-    <p class="product-price">{{ getFormattedPrice() }}</p>
+    <p class="product-price">{{ product.basePrice | currency:'EUR':'symbol':'1.2-2':'fr-FR' }}</p>
     
     <button 
       class="add-to-cart-btn" 
-      (click)="onAddToCart()"
+      (click)="onAddToCartModal($event)"
       [disabled]="!isAvailable()">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
         <circle cx="9" cy="21" r="1"></circle>
