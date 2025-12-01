@@ -2,10 +2,11 @@ import { Component, OnInit, inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { ProductApiService, Product } from '../../services/product-api-service';
+import { HamsterLoaderComponent } from '../../components/hamster-loader-component';
 
 @Component({
   selector: 'app-details-product-component',
-  imports: [CommonModule],
+  imports: [CommonModule, HamsterLoaderComponent],
   templateUrl: './details-product-component.html',
   styleUrl: './details-product-component.css',
 })
