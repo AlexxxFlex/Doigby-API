@@ -1,7 +1,7 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { ProductApiService } from '../../services/product-api-service';
+import { ProductApiService, Product } from '../../services/product-api-service';
 
 @Component({
   selector: 'app-details-product-component',
@@ -14,11 +14,13 @@ export class DetailsProductComponent implements OnInit {
   private router = inject(Router);
   private productService = inject(ProductApiService);
 
-  product: any = null;
+  product: Product | null = null;
   selectedSize: string = '';
   selectedColor: string = '';
   selectedImage: string = '';
   quantity: number = 1;
+  isLoading: boolean = true;
+  error: string | null = null;
 
   ngOnInit(): void {
     const slug = this.route.snapshot.paramMap.get('slug');
@@ -28,12 +30,23 @@ export class DetailsProductComponent implements OnInit {
   }
 
   private loadProduct(slug: string): void {
-    this.productService.getProductWithVariantBySlug(slug).subscribe(product => {
-      this.product = product;
-      if (this.product) {
-        this.selectedImage = this.product.images?.[0] || this.product.image;
-        this.selectedSize = this.product.sizes?.[0] || '';
-        this.selectedColor = this.product.colors?.[0] || '';
+    this.isLoading = true;
+    this.error = null;
+    
+    this.productService.getProductWithVariantBySlug(slug).subscribe({
+      next: (product) => {
+        this.product = product;
+        if (this.product) {
+          this.selectedImage = this.product.images?.[0] || this.product.image || 'assets/placeholder.jpg';
+          this.selectedSize = this.product.sizes?.[0] || '';
+          this.selectedColor = this.product.colors?.[0] || '';
+        }
+        this.isLoading = false;
+      },
+      error: (err) => {
+        console.error('Erreur lors du chargement du produit:', err);
+        this.error = 'Produit non trouvé';
+        this.isLoading = false;
       }
     });
   }
@@ -51,7 +64,7 @@ export class DetailsProductComponent implements OnInit {
   }
 
   incrementQuantity(): void {
-    if (this.quantity < this.product.stock) {
+    if (this.product && this.quantity < (this.product.stock || 0)) {
       this.quantity++;
     }
   }
@@ -67,10 +80,20 @@ export class DetailsProductComponent implements OnInit {
   }
 
   isAvailable(): boolean {
-    return this.product?.stock > 0;
+    return this.product?.isActive === true;
+  }
+
+  getAverageRating(): number {
+    if (!this.product?.reviews || this.product.reviews.length === 0) {
+      return 0;
+    }
+    const sum = this.product.reviews.reduce((acc, review) => acc + review.rating, 0);
+    return sum / this.product.reviews.length;
   }
 
   addToCart(): void {
+    if (!this.isAvailable()) return;
+    
     console.log('Ajout au panier:', {
       product: this.product,
       size: this.selectedSize,

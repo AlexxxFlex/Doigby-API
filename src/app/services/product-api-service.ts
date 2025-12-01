@@ -1,6 +1,6 @@
 import {inject, Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {Observable, map, mergeMap} from 'rxjs';
+import {Observable, map, mergeMap, forkJoin, of} from 'rxjs';
 import { environment } from '../environments/environment';
 
 export interface ApiProduct {
@@ -23,6 +23,39 @@ export interface ApiProduct {
   };
 }
 
+export interface ApiProductImage {
+  data: {
+    id: number;
+    productId: number;
+    imageUrl: string;
+    altText: string;
+    displayOrder: number;
+    isPrimary: boolean;
+  };
+}
+
+export interface ApiProductVariant {
+  data: {
+    id: number;
+    productId: number;
+    size: string;
+    color: string;
+    priceAdjustment: number;
+    stockQuantity: number;
+    sku: string;
+  };
+}
+
+export interface ApiReview {
+  data: {
+    id: number;
+    productId: number;
+    rating: number;
+    comment: string;
+    createdAt: string;
+  };
+}
+
 export interface Product {
   id: number;
   name: string;
@@ -38,6 +71,19 @@ export interface Product {
   colors?: string[];
   stock?: number;
   category?: { name: string };
+  reviews?: ApiReview['data'][];
+}
+
+export interface ApiCategory {
+  data: {
+    id: number;
+    name: string;
+    slug: string;
+    description: string;
+  };
+  _links: {
+    self: string;
+  };
 }
 
 @Injectable({
@@ -46,23 +92,61 @@ export interface Product {
 export class ProductApiService {
   private http = inject(HttpClient);
   private apiUrl = `${environment.apiUrl}/Products`;
+  private categoriesUrl = `${environment.apiUrl}/categories`;
+  private categoriesCache: Map<number, ApiCategory['data']> = new Map();
 
-  getProducts(): Observable<Product[]> {
-    return this.http.get<ApiProduct[]>(this.apiUrl).pipe(
-      map(response => response.map(item => this.mapToProduct(item)))
+  getCategories(): Observable<ApiCategory[]> {
+    return this.http.get<ApiCategory[]>(this.categoriesUrl);
+  }
+
+  private getCategoryById(categoryId: number): Observable<ApiCategory['data']> {
+    if (this.categoriesCache.has(categoryId)) {
+      return of(this.categoriesCache.get(categoryId)!);
+    }
+    return this.http.get<ApiCategory>(`${this.categoriesUrl}/${categoryId}`).pipe(
+      map(response => {
+        this.categoriesCache.set(categoryId, response.data);
+        return response.data;
+      })
     );
   }
 
-  private mapToProduct(apiProduct: ApiProduct): Product {
+  getProducts(): Observable<Product[]> {
+    return forkJoin({
+      products: this.http.get<ApiProduct[]>(this.apiUrl),
+      categories: this.getCategories()
+    }).pipe(
+      mergeMap(({ products, categories }) => {
+        const categoryMap = new Map(categories.map(c => [c.data.id, c.data]));
+        
+        // Récupérer les images pour chaque produit
+        const productObservables = products.map(item => 
+          this.getProductImages(item.data.id).pipe(
+            map(images => ({
+              ...item.data,
+              image: images[0] || '',
+              images: images,
+              sizes: [],
+              colors: [],
+              stock: item.data.isActive ? 10 : 0,
+              category: { name: categoryMap.get(item.data.categoryId)?.name || 'Catégorie inconnue' }
+            }))
+          ));
+        
+        return forkJoin(productObservables);
+      })
+    );
+  }
+
+  private mapToProduct(apiProduct: ApiProduct, category?: ApiCategory['data']): Product {
     return {
       ...apiProduct.data,
-      // Default values for missing fields
       image: 'assets/placeholder.jpg',
       images: [],
       sizes: [],
       colors: [],
-      stock: 10, // Default stock
-      category: { name: 'Catégorie' }
+      stock: apiProduct.data.isActive ? 10 : 0,
+      category: { name: category?.name || 'Catégorie inconnue' }
     };
   }
 
@@ -72,15 +156,57 @@ export class ProductApiService {
     );
   }
 
-  getProductVariant(productId: number): Observable<any> {
-    return this.http.get<any[]>(`${this.apiUrl}/${productId}/variants`).pipe(
-      map(variants => variants[0])
+  getProductImages(productId: number): Observable<string[]> {
+    return this.http.get<ApiProductImage[]>(`${environment.apiUrl}/productimages?productId=${productId}`).pipe(
+      map(images => {
+        if (!images || images.length === 0) {
+          return [];
+        }
+        const sortedImages = images.sort((a, b) => {
+          if (a.data.isPrimary) return -1;
+          if (b.data.isPrimary) return 1;
+          return a.data.displayOrder - b.data.displayOrder;
+        });
+        return sortedImages.map(img => img.data.imageUrl);
+      })
     );
+  }
+
+  getProductVariants(productId: number): Observable<ApiProductVariant[]> {
+    return this.http.get<ApiProductVariant[]>(`${environment.apiUrl}/productvariants?productId=${productId}`);
+  }
+
+  getProductReviews(productId: number): Observable<ApiReview[]> {
+    return this.http.get<ApiReview[]>(`${environment.apiUrl}/reviews?productId=${productId}`);
   }
 
   getProductWithVariant(productId: number): Observable<Product> {
     return this.http.get<ApiProduct>(`${this.apiUrl}/${productId}`).pipe(
-      map(response => this.mapToProduct(response))
+      mergeMap(response => 
+        forkJoin({
+          category: this.getCategoryById(response.data.categoryId),
+          images: this.getProductImages(productId),
+          variants: this.getProductVariants(productId),
+          reviews: this.getProductReviews(productId)
+        }).pipe(
+          map(({ category, images, variants, reviews }) => {
+            const sizes = [...new Set(variants.map(v => v.data.size).filter(s => s))];
+            const colors = [...new Set(variants.map(v => v.data.color).filter(c => c))];
+            const totalStock = variants.reduce((sum, v) => sum + v.data.stockQuantity, 0);
+            
+            return {
+              ...response.data,
+              image: images[0] || 'assets/placeholder.jpg',
+              images: images,
+              sizes: sizes,
+              colors: colors,
+              stock: response.data.isActive ? (totalStock > 0 ? totalStock : 10) : 0,
+              category: { name: category?.name || 'Catégorie inconnue' },
+              reviews: reviews.map(r => r.data)
+            };
+          })
+        )
+      )
     );
   }
 
@@ -88,9 +214,7 @@ export class ProductApiService {
     return this.getProductBySlug(slug).pipe(
       mergeMap(product => {
         if (!product) throw new Error('Product not found');
-        return this.http.get<ApiProduct>(`${this.apiUrl}/${product.id}`).pipe(
-          map(response => this.mapToProduct(response))
-        );
+        return this.getProductWithVariant(product.id);
       })
     );
   }

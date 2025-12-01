@@ -385,6 +385,24 @@
   margin: 0;
 }
 
+.loading-container,
+.error-container {
+  min-height: 50vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  padding: 2rem;
+}
+
+.loading-container p,
+.error-container h2 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.5rem;
+  color: var(--primary-color);
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;
