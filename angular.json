@@ -55,11 +55,9 @@
         "serve": {
           "builder": "@angular/build:dev-server",
           "configurations": {
-            "production": {
-              "buildTarget": "untitled2:build:production"
-            },
             "development": {
-              "buildTarget": "untitled2:build:development"
+              "buildTarget": "untitled2:build:development",
+              "proxyConfig": "proxy.conf.json"
             }
           },
           "defaultConfiguration": "development"
