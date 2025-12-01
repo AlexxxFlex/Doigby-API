@@ -5,14 +5,14 @@ import {
   provideZoneChangeDetection
 } from '@angular/core';
 import { provideRouter, withInMemoryScrolling } from '@angular/router';
-import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import localeFr from '@angular/common/locales/fr';
-import { registerLocaleData } from '@angular/common';
+import { registerLocaleData } from '@angular/common'; 
+import { apiHttpInterceptor } from './services/http-interceptor';
 
 registerLocaleData(localeFr);
 
 import { routes } from './app.routes';
-import { ApiHttpInterceptor } from '../app/services/http-interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -23,11 +23,7 @@ export const appConfig: ApplicationConfig = {
       withInMemoryScrolling({
         scrollPositionRestoration: 'enabled'
       })),
-    provideHttpClient(withInterceptorsFromDi()),
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: ApiHttpInterceptor,
-      multi: true
-    }
+    provideHttpClient(withInterceptors([apiHttpInterceptor])),
   ]
+
 };

@@ -1,17 +1,17 @@
-import { Component, inject, OnInit, AfterViewInit, OnDestroy, ElementRef } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProductApiService } from '../../services/product-api-service';
 import { ListProductComponent } from '../list-product-component/list-product-component';
+import { InfiniteScrollDirective } from '../../directives/intersection-oberver.directive';
 
 @Component({
   selector: 'app-home',
-  imports: [CommonModule, ListProductComponent],
+  imports: [CommonModule, ListProductComponent, InfiniteScrollDirective],
   templateUrl: './home-component.html',
   styleUrl: './home-component.css',
 })
-export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
+export class HomeComponent implements OnInit {
   private productService = inject(ProductApiService);
-  private elementRef = inject(ElementRef);
   
   allProducts: any[] = []; 
   displayedProducts: any[] = []; 
@@ -19,8 +19,6 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   itemsPerPage = 9;
   currentIndex = 0;
   isLoading = false;
-
-  private observer: IntersectionObserver | null = null;
 
   showSizeModal = false;
   selectedProduct: any = null;
@@ -33,35 +31,6 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
       this.displayedProducts = this.allProducts.slice(0, this.itemsPerPage);
       this.currentIndex = this.itemsPerPage;
     });
-  }
-
-  ngAfterViewInit() {
-    // Configuration de l'Intersection Observer
-    const options = {
-      root: null,
-      rootMargin: '0px',
-      threshold: 0.1
-    };
-
-    this.observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          this.loadMoreProducts();
-        }
-      });
-    }, options);
-
-    // On cible l'élément via sa classe CSS
-    const target = this.elementRef.nativeElement.querySelector('.loading-trigger');
-    if (target) {
-      this.observer.observe(target);
-    }
-  }
-
-  ngOnDestroy() {
-    if (this.observer) {
-      this.observer.disconnect();
-    }
   }
 
   loadMoreProducts(): void {

@@ -9,7 +9,11 @@
     (productSelected)="openSizeModal($event)">
   </app-list-product>
 
-  <div #anchor class="loading-trigger">
+  <div 
+    appInfiniteScroll 
+    [threshold]="0.1"
+    (scrolled)="loadMoreProducts()"
+    class="loading-trigger">
     @if (isLoading) {
       <div class="loader"></div>
     }
