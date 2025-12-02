@@ -91,7 +91,7 @@ export interface ApiCategory {
 })
 export class ProductApiService {
   private http = inject(HttpClient);
-  private apiUrl = `${environment.apiUrl}/Products`;
+  private apiUrl = `${environment.apiUrl}/products`;
   private categoriesUrl = `${environment.apiUrl}/categories`;
   private categoriesCache: Map<number, ApiCategory['data']> = new Map();
 
@@ -116,24 +116,18 @@ export class ProductApiService {
       products: this.http.get<ApiProduct[]>(this.apiUrl),
       categories: this.getCategories()
     }).pipe(
-      mergeMap(({ products, categories }) => {
+      map(({ products, categories }) => {
         const categoryMap = new Map(categories.map(c => [c.data.id, c.data]));
         
-        // Récupérer les images pour chaque produit
-        const productObservables = products.map(item => 
-          this.getProductImages(item.data.id).pipe(
-            map(images => ({
-              ...item.data,
-              image: images[0] || '',
-              images: images,
-              sizes: [],
-              colors: [],
-              stock: item.data.isActive ? 10 : 0,
-              category: { name: categoryMap.get(item.data.categoryId)?.name || 'Catégorie inconnue' }
-            }))
-          ));
-        
-        return forkJoin(productObservables);
+        return products.map(item => ({
+          ...item.data,
+          image: '',
+          images: [],
+          sizes: [],
+          colors: [],
+          stock: item.data.isActive ? 10 : 0,
+          category: { name: categoryMap.get(item.data.categoryId)?.name || 'Catégorie inconnue' }
+        }));
       })
     );
   }
