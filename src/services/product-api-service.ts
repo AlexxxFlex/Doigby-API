@@ -74,6 +74,24 @@ export interface Product {
   reviews?: ApiReview['data'][];
 }
 
+export interface CreateProductDto {
+  name: string;
+  slug: string;
+  description: string;
+  basePrice: number;
+  isActive: boolean;
+  categoryId: number;
+}
+
+export interface UpdateProductDto {
+  name?: string;
+  slug?: string;
+  description?: string;
+  basePrice?: number;
+  isActive?: boolean;
+  categoryId?: number;
+}
+
 export interface ApiCategory {
   data: {
     id: number;
@@ -205,5 +223,22 @@ export class ProductApiService {
     return this.getProducts().pipe(
       map(products => products.filter(p => p.isActive))
     );
+  }
+
+  // CRUD Operations for Admin
+  createProduct(product: CreateProductDto): Observable<ApiProduct> {
+    return this.http.post<ApiProduct>(this.apiUrl, product);
+  }
+
+  updateProduct(productId: number, product: UpdateProductDto): Observable<ApiProduct> {
+    return this.http.put<ApiProduct>(`${this.apiUrl}/${productId}`, product);
+  }
+
+  deleteProduct(productId: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${productId}`);
+  }
+
+  getProductById(productId: number): Observable<ApiProduct> {
+    return this.http.get<ApiProduct>(`${this.apiUrl}/${productId}`);
   }
 }

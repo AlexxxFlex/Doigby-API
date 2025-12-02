@@ -8,7 +8,7 @@ import { provideRouter, withInMemoryScrolling } from '@angular/router';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import localeFr from '@angular/common/locales/fr';
 import { registerLocaleData } from '@angular/common'; 
-import { apiHttpInterceptor } from './services/http-interceptor';
+import { apiHttpInterceptor } from '../interceptors/http-interceptor';
 
 registerLocaleData(localeFr);
 

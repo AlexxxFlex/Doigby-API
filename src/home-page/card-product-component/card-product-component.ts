@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
@@ -10,7 +10,6 @@ import { CommonModule } from '@angular/common';
 })
 export class CardProductComponent {
   @Input() product: any;
-  @Output() addToCart = new EventEmitter<any>();
 
   constructor(private router: Router) {}
 
@@ -18,9 +17,10 @@ export class CardProductComponent {
     this.router.navigate(['/product', this.product.slug]);
   }
 
-  onAddToCartModal(event: Event): void {
+  onAddToCart(event: Event): void {
     event.stopPropagation();
-    this.addToCart.emit(this.product);
+    // Redirige vers la page de détail pour choisir taille/couleur
+    this.router.navigate(['/product', this.product.slug]);
   }
 
   isAvailable(): boolean {

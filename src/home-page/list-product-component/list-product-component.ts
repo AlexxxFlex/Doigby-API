@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CardProductComponent } from '../card-product-component/card-product-component';
 
@@ -11,9 +11,4 @@ import { CardProductComponent } from '../card-product-component/card-product-com
 export class ListProductComponent {
   @Input() products: any[] = [];
   @Input() categoryName: string = '';
-  @Output() productSelected = new EventEmitter<any>();
-
-  onProductSelected(product: any): void {
-    this.productSelected.emit(product);
-  }
 }

@@ -1,0 +1,297 @@
+<div class="admin-page-container">
+  <button class="back-button" (click)="goBack()">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <polyline points="15 18 9 12 15 6"></polyline>
+    </svg>
+    Retour
+  </button>
+
+  <div class="admin-panel">
+    <div class="admin-header">
+      <h2>Gestion des Produits</h2>
+      <div class="admin-header-actions">
+        <button class="create-btn" (click)="openCreateModal()">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="12" y1="5" x2="12" y2="19"></line>
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+          </svg>
+          Nouveau Produit
+        </button>
+      </div>
+    </div>
+
+    @if (successMessage) {
+      <div class="message success">{{ successMessage }}</div>
+    }
+    @if (errorMessage) {
+      <div class="message error">{{ errorMessage }}</div>
+    }
+
+    @if (isLoading && products.length === 0) {
+      <div class="loading">Chargement...</div>
+    }
+
+    <div class="products-table">
+      <table>
+        <thead>
+          <tr>
+            <th>Nom</th>
+            <th>Prix</th>
+            <th>Catégorie</th>
+            <th>Actif</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (product of products; track product.id) {
+            <tr>
+              <td class="product-name-cell">{{ product.name }}</td>
+              <td class="price-cell">{{ product.basePrice | currency:'EUR':'symbol':'1.2-2':'fr-FR' }}</td>
+              <td>{{ product.category?.name }}</td>
+              <td>
+                <span class="status-badge" [class.active]="product.isActive" [class.inactive]="!product.isActive">
+                  {{ product.isActive ? 'Oui' : 'Non' }}
+                </span>
+              </td>
+              <td class="actions">
+                <button class="edit-btn" (click)="openEditModal(product)" title="Modifier">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                    <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                  </svg>
+                </button>
+                <button class="delete-btn" (click)="openDeleteConfirm(product)" title="Supprimer">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="3 6 5 6 21 6"></polyline>
+                    <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                  </svg>
+                </button>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- Create Modal -->
+@if (showCreateModal) {
+  <div class="modal-overlay" (click)="closeCreateModal()">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+      <button class="modal-close" (click)="closeCreateModal()">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+
+      <h3>Créer un nouveau produit</h3>
+
+      <form (ngSubmit)="createProduct()" class="product-form">
+        <div class="form-group">
+          <label for="name">Nom du produit *</label>
+          <input 
+            type="text" 
+            id="name" 
+            [(ngModel)]="formData.name" 
+            name="name"
+            (blur)="generateSlug()"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="slug">Slug *</label>
+          <input 
+            type="text" 
+            id="slug" 
+            [(ngModel)]="formData.slug" 
+            name="slug"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="description">Description</label>
+          <textarea 
+            id="description" 
+            [(ngModel)]="formData.description" 
+            name="description"
+            rows="4"
+          ></textarea>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="basePrice">Prix (€) *</label>
+            <input 
+              type="number" 
+              id="basePrice" 
+              [(ngModel)]="formData.basePrice" 
+              name="basePrice"
+              step="0.01"
+              min="0"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="categoryId">Catégorie *</label>
+            <select 
+              id="categoryId" 
+              [(ngModel)]="formData.categoryId" 
+              name="categoryId"
+              required
+            >
+              @for (category of categories; track category.data.id) {
+                <option [value]="category.data.id">{{ category.data.name }}</option>
+              }
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group checkbox-group">
+          <label>
+            <input 
+              type="checkbox" 
+              [(ngModel)]="formData.isActive" 
+              name="isActive"
+            />
+            Produit actif
+          </label>
+        </div>
+
+        @if (errorMessage) {
+          <div class="message error">{{ errorMessage }}</div>
+        }
+
+        <div class="form-actions">
+          <button type="button" class="cancel-btn" (click)="closeCreateModal()">Annuler</button>
+          <button type="submit" class="submit-btn" [disabled]="isLoading">
+            {{ isLoading ? 'Création...' : 'Créer' }}
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+}
+
+<!-- Edit Modal -->
+@if (showEditModal) {
+  <div class="modal-overlay" (click)="closeEditModal()">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+      <button class="modal-close" (click)="closeEditModal()">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+
+      <h3>Modifier le produit</h3>
+
+      <form (ngSubmit)="updateProduct()" class="product-form">
+        <div class="form-group">
+          <label for="edit-name">Nom du produit *</label>
+          <input 
+            type="text" 
+            id="edit-name" 
+            [(ngModel)]="formData.name" 
+            name="name"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="edit-slug">Slug *</label>
+          <input 
+            type="text" 
+            id="edit-slug" 
+            [(ngModel)]="formData.slug" 
+            name="slug"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="edit-description">Description</label>
+          <textarea 
+            id="edit-description" 
+            [(ngModel)]="formData.description" 
+            name="description"
+            rows="4"
+          ></textarea>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="edit-basePrice">Prix (€) *</label>
+            <input 
+              type="number" 
+              id="edit-basePrice" 
+              [(ngModel)]="formData.basePrice" 
+              name="basePrice"
+              step="0.01"
+              min="0"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="edit-categoryId">Catégorie *</label>
+            <select 
+              id="edit-categoryId" 
+              [(ngModel)]="formData.categoryId" 
+              name="categoryId"
+              required
+            >
+              @for (category of categories; track category.data.id) {
+                <option [value]="category.data.id">{{ category.data.name }}</option>
+              }
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group checkbox-group">
+          <label>
+            <input 
+              type="checkbox" 
+              [(ngModel)]="formData.isActive" 
+              name="isActive"
+            />
+            Produit actif
+          </label>
+        </div>
+
+        @if (errorMessage) {
+          <div class="message error">{{ errorMessage }}</div>
+        }
+
+        <div class="form-actions">
+          <button type="button" class="cancel-btn" (click)="closeEditModal()">Annuler</button>
+          <button type="submit" class="submit-btn" [disabled]="isLoading">
+            {{ isLoading ? 'Mise à jour...' : 'Mettre à jour' }}
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+}
+
+<!-- Delete Confirmation Modal -->
+@if (showDeleteConfirm) {
+  <div class="modal-overlay" (click)="closeDeleteConfirm()">
+    <div class="modal-content delete-modal" (click)="$event.stopPropagation()">
+      <h3>Confirmer la suppression</h3>
+      <p>Êtes-vous sûr de vouloir supprimer le produit <strong>{{ selectedProduct?.name }}</strong> ?</p>
+      <p class="warning">Cette action est irréversible.</p>
+
+      <div class="form-actions">
+        <button type="button" class="cancel-btn" (click)="closeDeleteConfirm()">Annuler</button>
+        <button type="button" class="delete-confirm-btn" (click)="deleteProduct()" [disabled]="isLoading">
+          {{ isLoading ? 'Suppression...' : 'Supprimer' }}
+        </button>
+      </div>
+    </div>
+  </div>
+}
