@@ -1,3 +1,18 @@
+@import "tailwindcss";
+
+/* Configuration du thème directement en CSS (Tailwind v4) */
+@theme {
+  --color-primary: #00256e;
+  --color-secondary: #34495e;
+  --color-accent: #ffffff;
+  
+  --font-poppins: 'Poppins', sans-serif;
+  --font-inter: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  
+  --shadow-custom: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Vos variables CSS personnalisées (pour compatibilité avec le CSS existant) */
 :root {
   --primary-color: #00256e;
   --secondary-color: #34495e;

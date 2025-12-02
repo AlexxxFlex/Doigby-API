@@ -138,18 +138,6 @@ export class ProductApiService {
     );
   }
 
-  private mapToProduct(apiProduct: ApiProduct, category?: ApiCategory['data']): Product {
-    return {
-      ...apiProduct.data,
-      image: 'assets/placeholder.jpg',
-      images: [],
-      sizes: [],
-      colors: [],
-      stock: apiProduct.data.isActive ? 10 : 0,
-      category: { name: category?.name || 'Catégorie inconnue' }
-    };
-  }
-
   getProductBySlug(slug: string): Observable<Product | undefined> {
     return this.getProducts().pipe(
       map(products => products.find(p => p.slug === slug))

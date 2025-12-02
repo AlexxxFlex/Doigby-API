@@ -117,9 +117,9 @@ h2 {
 }
 
 .cta-button:hover {
-  background: linear-gradient(135deg, #1e55b5, #00256e);
-  box-shadow: 0 4px 12px rgba(52, 152, 219, 0.2);
+  background: var(--primary-color);
   color: var(--accent-color);
+  box-shadow: 0 4px 12px rgba(52, 152, 219, 0.2);
 }
 
 .stats-section {
